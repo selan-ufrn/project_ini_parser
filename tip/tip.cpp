@@ -197,10 +197,11 @@ TIP::parser_error_msg(void) const{
 std::vector<std::string> TIP::get_fields_list(const std::string& section_) const{
     std::vector<std::string> fields;
     // Does this section exist?
-    if(m_sections.count(section_)==0) return fields;
-    // Capture all fields of this particular section.
-    for(const auto&[field, value] : m_sections.at(section_))
-        fields.emplace_back(field);
+    if(m_sections.count(section_)!=0){
+        // Capture all fields of this particular section.
+        for(const auto&[field, value] : m_sections.at(section_))
+            fields.emplace_back(field);
+    }
     return fields;
 }
 
