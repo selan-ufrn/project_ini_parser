@@ -29,3 +29,13 @@ add_executable(driver_tip examples/driver_tip.cpp)
 target_compile_features( driver_tip PUBLIC cxx_std_17 )
 # Define target and its dependency
 target_link_libraries( driver_tip PRIVATE tip )
+
+
+#=== SYSTEM WIDE INSTALLATION ===#
+include(GNUInstallDirs)
+configure_file(tip.pc.in tip.pc @ONLY)
+install(TARGETS tip
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(FILES ${CMAKE_BINARY_DIR}/tip.pc
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)

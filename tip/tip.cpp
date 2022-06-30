@@ -366,11 +366,10 @@ std::optional<std::string> TIP::retrieve_value(const string& section_, const str
 
 std::string TIP::pretty_print(void) const{
     std::ostringstream oss;
-    // Get the section list so we can traver their fields.
+    // Get the section list so we can traverse their fields.
     auto sections = get_sections_list();
     for(const auto& sec_name : sections){
-        // Lets determine the max field length.
-        // We need this to align all fields.
+        // Lets determine the max field length. We need this to align all fields.
         size_t max_field_len{0};
         auto fields = get_fields_list(sec_name);
         std::for_each(fields.cbegin(),fields.cend(),
